@@ -1,58 +1,260 @@
-header {
-    background: red url(./img/fundos/hero-fundo.webp) center / cover;
-    color: white;
+/* Cores e medidas usadas em toda a página. */
+:root {
+    --rosa: #d32d7d;          /* botões principais */
+    --rosa-escuro: #bd0068;   /* hover dos botões */
+    --azul: #0370b6;          /* botões secundários */
+    --azul-noite: #03063e;    /* fundos escuros */
+    --turquesa: #45c9b6;
+    --creme: #f6f5f5;
+    --branco: #ffffff;
+
+    --fonte: "Inter", Arial, sans-serif;
+    --largura-max: 1536px;    /* largura máxima do conteúdo */
 }
 
-.top_header_options {
+
+/* RESET - Tira as margens e paddings que o browser põe por defeito e
+   faz com que width/height incluam o padding e a border.*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* BASE (estilos das tags, sem classes)*/
+body {
+    font-family: var(--fonte);
+    line-height: 1.5;
+    color: var(--azul-noite);
+}
+
+/* img nunca pode ser maior do que o elemento pai */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;           /* os links usam a cor do pai */
+    text-decoration: none;
+}
+
+button {
+    font: inherit;            /* os botões não herdam a fonte por defeito */
+    cursor: pointer;
+}
+
+
+
+.sr-only {
     position: absolute;
-    top: 0;
-    right: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-.top_header_options {
-    ul {
-        display: flex;
-        margin-right: 15px;
-    }
+/* SECÇÕES */
 
-    li {
-        width: auto;
-        height: 80px;
-        list-style-type: none;
-        text-align: center;
-        padding: 5px 10px;
+/* ------------------------------ Header / navegação ---------------------------- */
 
-        a {
-            color: white;
-            text-decoration: none;
-        }
-
-    }
-
+header {
+    background: var(--azul-noite) url(./img/fundos/hero-fundo.webp) center / cover ;
+    color: var(--branco);
+    opacity: 0.9;
 }
 
+/* A nav é uma coluna com duas linhas: a barra de cima e a linha do logo */
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: var(--largura-max);
+    margin: 0 auto;           /* centra a nav em ecrãs muito largos */
+    padding: 12px 48px;
+    position: relative;       /* fica por cima do vídeo do hero (secção 2) */
+    z-index: 10;
+}
 
+/* Linha 1: links pequenos encostados à direita */
+.top_header_options ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 28px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.top_header_options a:hover {
+    text-decoration: underline;
+}
+
+.search-trigger {
+    background: none;
+    border: none;
+    display: flex;            /* centra o ícone dentro do botão */
+}
+
+.search-trigger img {
+    filter: brightness(0) invert(1);   /* o SVG é preto: assim fica branco */
+}
+
+/* Linha 2: logo à esquerda, grupo do menu à direita */
 .second_Line_Header_Options {
     display: flex;
-   
-    ul{
-        display: flex;
-        
-    }
-     li {
-        overflow: hidden;
-        height: 80px;
-        list-style-type: none;
-        text-align: center;
-        padding: 5px 10px;
-
-        a {
-            color: white;
-            text-decoration: none;
-                    width: 300px;
-
-        }
-    }
+    justify-content: space-between;
+    align-items: center;
 }
 
+/* Grupo da direita: menu + logos 4YFN/GLOMO + botão, numa fila */
+.nav-direita {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+/* Menu principal */
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;  
+    letter-spacing: 0.5px;
+}
+
+.menu__item {
+    position: relative;       /* serve de referência ao submenu */
+    padding: 12px 0;          /* padding e não margin para o hover não ficar encostado ao submenu */
+}
+
+.menu__item img {
+    height: 40px;             /* logos 4YFN e GLOMO; a largura ajusta-se sozinha */
+    width: auto;
+}
+
+/* Submenu: caixa branca, escondida por defeito, aparece por baixo do item */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;                /* logo abaixo do item pai */
+    left: -16px;
+    min-width: 200px;
+    padding: 8px 24px;
+    background: var(--branco);
+    color: var(--azul-noite);
+    border-radius: 6px;
+    text-transform: none;     /* anula o uppercase herdado do .menu */
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+/* Seta no topo do submenu: um triângulo feito só com bordas */
+.submenu::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;             /* fica colado por cima da caixa */
+    left: 40px;
+    border: 8px solid transparent;
+    border-bottom-color: var(--branco);   /* só a borda de baixo tem cor */
+}
+
+/* Quando o rato está em cima do item, mostra o submenu dele */
+.menu__item:hover > .submenu {
+    display: block;
+}
+
+/* Linha cinzenta entre as opções (não aparece antes da primeira) */
+.submenu li + li { /*um li logo depois de outro li*/
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Cada elemento a: texto à esquerda, chevron à direita */
+.submenu a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 14px 0;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+
+/* chevron*/
+.submenu a::after {
+    content: "";
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;           /* nunca encolhe */
+    background: url(./img/icones/interface/chevron-direita.svg) center / contain no-repeat;
+    transition: transform 0.2s;
+}
+
+.submenu a:hover {
+    color: var(--azul);
+}
+
+/*Animação do chevron ao passar o rato*/
+.submenu a:hover::after {
+    transform: translateX(4px);   /* o chevron avança um pouco no hover */
+}
+
+/* Botão "Buy your pass" */
+.BuyYourPass a {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 6px;
+    background-color: var(--rosa);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;      /* o texto do botão não parte em duas linhas */
+    transition: background-color 0.2s;
+}
+
+.BuyYourPass a:hover {
+    background-color: var(--rosa-escuro);
+}
+
+/* ---------- Hero ---------- */
+
+/* Coluna de conteúdo alinhada à esquerda, com a mesma largura e margens da nav */
+.hero {
+    /*display: flex;
+    /*flex-direction: column;
+    align-items: flex-start;  /* conteudo encostado à esquerda  */
+    max-width: var(--largura-max);
+    margin: 0 auto;
+    padding: 80px 48px 90px;
+}
+
+.hero h1 {
+    font-size: 66px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 40px;
+}
+
+.hero div {
+    max-width: 700px;         /* limita o comprimento das linhas*/
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+.hero .BuyYourPass {
+    margin-top: 64px;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
 

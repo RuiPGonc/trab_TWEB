@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MWC Barcelona 2027</title>
+    <!-- Fonte Inter (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
     <script src="logica.js" defer></script>
 </head>
@@ -12,17 +16,14 @@
 <body>
 
     <header>
-        <a href="#maincontent" role="button">
-            <!-- Todo Rui: verificar este with, heiht e alt aqui  e ver o role button de cima e ver os outros role que aparecem-->
-            <img src="./img/icones/interface/chevron-baixo.svg" alt="">
-            <span>Skip to main content.</span>
-        </a>
+        
         <nav>
             <div class="top_header_options">
                 <ul role="list">
                     <li>
-                        <button class="search-trigger" href="#" aria-label="Click to search">
-                            <span>Search</span>
+                        <button class="search-trigger" type="button" aria-label="Click to search">
+                            <img src="./img/icones/interface/pesquisa.svg" alt="" width="18" height="18">
+                            <span class="sr-only">Search</span>
                         </button>
                     </li>
                     <li>
@@ -45,11 +46,11 @@
                 <a href="https://www.mwcbarcelona.com/">
                     <img src="./img/logos/mwc27-barcelona.webp" alt="MWC Barcelona" width="230">
                 </a>
-                <div>
-                    <ul role="menu">
-                        <li role="menuitem">
+                <div class="nav-direita">
+                    <ul class="menu" role="menu">
+                        <li class="menu__item" role="menuitem">
                             <span>2027 lineup</span>
-                            <ul>
+                            <ul class="submenu">
                                 <li>
                                     <a
                                         href="https://www.mwcbarcelona.com/agenda?date=2027-03-01&amp;track=Keynotes;Conference">
@@ -78,9 +79,9 @@
                                 </li>
                             </ul>
                         </li>
-                        <li role="menuitem">
+                        <li class="menu__item" role="menuitem">
                             <span>Attend</span>
-                            <ul>
+                            <ul class="submenu">
                                 <li>
                                     <a href="https://www.mwcbarcelona.com/attend">
                                         <span>Why attend?</span>
@@ -108,9 +109,9 @@
                                 </li>
                             </ul>
                         </li>
-                        <li role="menuitem">
+                        <li class="menu__item" role="menuitem">
                             <span>Get involved</span>
-                            <ul>
+                            <ul class="submenu">
                                 <li>
                                     <a href="https://www.mwcbarcelona.com/become-a-sponsor-or-exhibitor">
                                         <span>Become a sponsor or exhibitor</span>
@@ -124,9 +125,9 @@
                                 </li>
                             </ul>
                         </li>
-                        <li role="menuitem">
+                        <li class="menu__item" role="menuitem">
                             <span>About</span>
-                            <ul>
+                            <ul class="submenu">
                                 <li>
                                     <a href="https://www.mwcbarcelona.com/about">
                                         <span>About</span>
@@ -149,28 +150,25 @@
                                 </li>
                             </ul>
                         </li>
-                        <li role="menuitem">
+                        <li class="menu__item" role="menuitem">
                             <a href="https://www.4yfn.com/" target="_blank">
                                 <img src="./img/logos/4yfn.png" alt="4YFN">
                             </a>
                         </li>
-                        <li role="menuitem">
+                        <li class="menu__item" role="menuitem">
                             <a href="https://www.mwcbarcelona.com/mobile-awards">
                                 <img src="./img/logos/glomo-branco.png" alt="GLOMO">
                             </a>
                         </li>
                     </ul>
-                    <div class="BuyYourPass btn">
+                    <div class="BuyYourPass">
                         <a href="https://www.mwcbarcelona.com/passes">Buy your pass</a>
                     </div>
                 </div>
             </div>
         </nav>
 
-        <div class="video background">
-            <video src="./videos/hero-fundo.mp4" autoplay muted loop playsinline></video>
-        </div>
-        <section>
+        <section class="hero">
             <h1> Registration is now open!</h1>
             <div>
                 MWC27 Barcelona is where the connectivity ecosystem does business. Secure your
@@ -178,10 +176,8 @@
                 transformation worldwide. <br><br>Lock in today's rate on Exhibition and Leaders Conference passes
                 before prices rise. <br> <br>1 - 4 March, 2027 <strong><br>Fira Gran Via, Barcelona<br></strong>
             </div>
-            <div class="buyPassBtn">
-                <a href="https://www.mwcbarcelona.com/passes">
-                    <span>Buy your pass</span>
-                </a>
+            <div class="BuyYourPass">
+                <a href="https://www.mwcbarcelona.com/passes">Buy your pass</a>
             </div>
         </section>
     </header>
