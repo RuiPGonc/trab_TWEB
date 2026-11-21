@@ -1,0 +1,58 @@
+header {
+    background: red url(./img/fundos/hero-fundo.webp) center / cover;
+    color: white;
+}
+
+.top_header_options {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.top_header_options {
+    ul {
+        display: flex;
+        margin-right: 15px;
+    }
+
+    li {
+        width: auto;
+        height: 80px;
+        list-style-type: none;
+        text-align: center;
+        padding: 5px 10px;
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+    }
+
+}
+
+
+.second_Line_Header_Options {
+    display: flex;
+   
+    ul{
+        display: flex;
+        
+    }
+     li {
+        overflow: hidden;
+        height: 80px;
+        list-style-type: none;
+        text-align: center;
+        padding: 5px 10px;
+
+        a {
+            color: white;
+            text-decoration: none;
+                    width: 300px;
+
+        }
+    }
+}
+
+
