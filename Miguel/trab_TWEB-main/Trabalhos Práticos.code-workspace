@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../ISEC/Tecnologias Web/Trabalhos Práticos"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "TWeb Trabalho prático"
+	}
+}
